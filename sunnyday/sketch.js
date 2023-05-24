@@ -92,7 +92,7 @@ function Blades() {
 
 function Clouds() {
 	this.x = random(width);
-	this.y = random(height);
+	this.y = random(grassH);
 
 	this.cloud = function () {
 		fill(250);
