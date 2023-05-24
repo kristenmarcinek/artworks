@@ -4,7 +4,7 @@ const noiseScale = 0.01 / 2;
 
 function setup() 
 {
-	createCanvas(400, 400);
+	createCanvas(windowWidth, windowHeight);
 
 	for(let i = 0; i < num; i++) 
 	{
