@@ -12,9 +12,38 @@ function addAll(arr, list) {
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
+  generateSnowflakes();
+}
+
+function draw() {
+  background(8, 24, 102);
+  translate(0, 100);
+
+  stroke(255);
+
+  let remainingLines = [];
+
+  for (let l of lines) {
+    l.show();
+
+    if (l.b.y <= windowHeight) {
+      remainingLines.push(l);
+    }
+  }
+
+  lines = remainingLines;
+
+  if (lines.length === 0) {
+    generateSnowflakes();
+  }
+}
+
+function generateSnowflakes() {
+  lines = [];
+
   for (let i = 0; i < 20; i++) {
     x = random(0, windowWidth);
-    y = random(0, windowHeight - 100);
+    y = random(-windowHeight, 0);
 
     let a = createVector(x + 0, y + 25);
     let b = createVector(x + 75, y + 25);
@@ -32,7 +61,7 @@ function setup() {
 
   linesAmount = random(1, 3);
 
-  for (i = 0; i < linesAmount; i++) {
+  for (let i = 0; i < linesAmount; i++) {
     let generation = [];
 
     for (let l of lines) {
@@ -41,22 +70,5 @@ function setup() {
     }
 
     lines = generation;
-  }
-}
-
-function draw() {
-  background(8, 24, 102);
-  translate(0, 100);
-
-  stroke(255);
-
-  for (let l of lines) {
-    l.show();
-
-    y = y + 3;
-    
-    if (y >= windowHeight) {
-      y = 0;
-    }
   }
 }

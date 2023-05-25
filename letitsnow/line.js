@@ -30,10 +30,5 @@ class Line {
 
     this.a.y = this.a.y + 3;
     this.b.y = this.b.y + 3;
-
-    if (this.a.y && this.b.y >= windowHeight) {
-      this.a.y = -100;
-      this.b.y = -100;
-    }
   }
 }
